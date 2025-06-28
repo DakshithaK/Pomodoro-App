@@ -1,10 +1,9 @@
-const bells = new Audio('./sounds/bell.wav');
 const startBtn = document.querySelector('.btn-start');
 const session = document.querySelector('.minutes');
 
 let myInterval;
 let state = true;
-let totalSeconds; // 👈 Declare this globally so both functions can access it
+let totalSeconds;
 
 const updateSeconds = () => {
   const minuteDiv = document.querySelector('.minutes');
@@ -15,18 +14,14 @@ const updateSeconds = () => {
   let minutesLeft = Math.floor(totalSeconds / 60);
   let secondsLeft = totalSeconds % 60;
 
-  if (secondsLeft < 10) {
-    secondDiv.textContent = '0' + secondsLeft;
-  } else {
-    secondDiv.textContent = secondsLeft;
-  }
-
+  // Format seconds with leading zero
+  secondDiv.textContent = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
   minuteDiv.textContent = `${minutesLeft}`;
 
+  // Stop timer when it reaches zero
   if (minutesLeft === 0 && secondsLeft === 0) {
-    bells.play();
     clearInterval(myInterval);
-    state = true; // Allow restarting
+    state = true; // Allow restart
   }
 };
 
