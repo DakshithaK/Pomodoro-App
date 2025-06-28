@@ -14,11 +14,9 @@ const updateSeconds = () => {
   let minutesLeft = Math.floor(totalSeconds / 60);
   let secondsLeft = totalSeconds % 60;
 
-  // Format seconds with leading zero
   secondDiv.textContent = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
   minuteDiv.textContent = `${minutesLeft}`;
 
-  // Stop timer when it reaches zero
   if (minutesLeft === 0 && secondsLeft === 0) {
     clearInterval(myInterval);
     state = true; // Allow restart
