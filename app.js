@@ -4,7 +4,7 @@ const session = document.querySelector('.minutes');
 
 let myInterval;
 let state = true;
-let totalSeconds; 
+let totalSeconds; // 👈 Declare this globally so both functions can access it
 
 const updateSeconds = () => {
   const minuteDiv = document.querySelector('.minutes');
@@ -26,7 +26,7 @@ const updateSeconds = () => {
   if (minutesLeft === 0 && secondsLeft === 0) {
     bells.play();
     clearInterval(myInterval);
-    state = true; // allow restarting
+    state = true; // Allow restarting
   }
 };
 
